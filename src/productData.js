@@ -32,7 +32,7 @@ export default [
         productName: "Brazil Santos",
         img: "/images/product4.jpg",
         roastType: "Medium Roast",
-        price: 0,
+        price: 145,
         productType: "Classic Coffee Beans",
         productId: nanoid(),
         isAddedtoCart: false,

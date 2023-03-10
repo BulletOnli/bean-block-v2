@@ -9,6 +9,11 @@ const Navbar = () => {
                     Bean Block
                 </p>
             </Link>
+            <Link to="/cart">
+                <p className="uppercase text-white text-md lg:text-xl font-bold tracking-wider">
+                    Shopping cart
+                </p>
+            </Link>
         </div>
     );
 };
