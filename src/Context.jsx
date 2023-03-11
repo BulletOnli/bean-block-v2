@@ -14,12 +14,37 @@ const initialState = {
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const addToCart = (id) => {
-        dispatch({ type: "ADD_TO_CART", payload: id });
+    const addToCart = (id, price) => {
+        dispatch({ type: "ADD_TO_CART", payload: { id, price } });
+    };
+
+    const removeToCart = (id) => {
+        dispatch({ type: "REMOVE_TO_CART", payload: id });
+    };
+
+    const placeOrder = () => {
+        dispatch({ type: "PLACE_ORDER" });
+    };
+
+    const addQuantity = (id) => {
+        dispatch({ type: "ADD_QUANTITY", payload: id });
+    };
+
+    const removeQuantity = (id) => {
+        dispatch({ type: "REMOVE_QUANTITY", payload: id });
     };
 
     return (
-        <Context.Provider value={{ ...state, addToCart }}>
+        <Context.Provider
+            value={{
+                ...state,
+                addToCart,
+                removeToCart,
+                placeOrder,
+                addQuantity,
+                removeQuantity,
+            }}
+        >
             {children}
         </Context.Provider>
     );

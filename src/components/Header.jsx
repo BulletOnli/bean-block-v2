@@ -8,14 +8,14 @@ const Header = () => {
             <div className="w-full h-[20rem] lg:h-[75%] bg-[#ff9100] grid grid-cols-1 lg:grid-cols-custom rounded-b-[2rem] lg:rounded-b-[4rem] lg:justify-center">
                 <div className="w-full flex flex-col items-center justify-center ">
                     <h1
-                        className="uppercase text-4xl lg:text-[3.5rem] font-bold lg:tracking-wide mb-1 lg:mb-5"
+                        className="uppercase text-4xl lg:text-[4rem] font-bold lg:tracking-wide mb-1 lg:mb-5"
                         style={{
-                            fontFamily: "Montserrat",
+                            fontFamily: "Kanit",
                         }}
                     >
                         Bean Block
                     </h1>
-                    <h3 className="uppercase text-[#22333b] text-sm lg:text-base tracking-[3px]">
+                    <h3 className="uppercase text-[#22333b] text-sm lg:text-lg tracking-[3px]">
                         Coffee Roasters
                     </h3>
                     <div className="w-full flex justify-center items-center my-4 lg:my-7">

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
 
 const ProductCard = (props) => {
@@ -22,7 +21,9 @@ const ProductCard = (props) => {
                 {props.data.productName}
             </h2>
             <button
-                onClick={() => addToCart(props.data.productId)}
+                onClick={() =>
+                    addToCart(props.data.productId, props.data.price)
+                }
                 className="w-max text-xs text-white mx-auto bg-[#FB5607] hover:bg-[#fb5407c4] lg:font-medium mb-3 py-[5px] px-3 lg:py-[5px] lg:mt-2 rounded-[4px]"
             >
                 Add to Cart

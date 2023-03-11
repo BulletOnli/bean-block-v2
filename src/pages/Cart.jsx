@@ -1,9 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
+import { FaCcMastercard, FaRegCreditCard } from "react-icons/Fa";
+import { TbTruckDelivery } from "react-icons/tb";
 
 const Cart = () => {
-    const { cartItems } = useGlobalContext();
+    const {
+        cartItems,
+        totalItems,
+        totalAmount,
+        removeToCart,
+        placeOrder,
+        addQuantity,
+        removeQuantity,
+    } = useGlobalContext();
 
     return (
         <>
@@ -39,44 +49,111 @@ const Cart = () => {
                             </p>
                         </div>
                         {/* items start here */}
-                        {cartItems.map((item) => {
-                            return (
-                                <div className="w-full flex ">
-                                    <div className="w-[25rem]">
-                                        {item.productName}
+                        {!cartItems ? (
+                            <span className="mx-auto my-8">
+                                No Items in the Cart
+                            </span>
+                        ) : (
+                            cartItems.map((item, index) => {
+                                return (
+                                    <div
+                                        className="w-full flex items-center"
+                                        key={index}
+                                    >
+                                        <div className="w-[25rem]">
+                                            {item.productName}
+                                        </div>
+                                        <p className="w-[8rem] text-center">
+                                            {item.price}
+                                        </p>
+                                        <div className="w-[8rem] text-center flex justify-center">
+                                            <button
+                                                onClick={() =>
+                                                    removeQuantity(
+                                                        item.productId
+                                                    )
+                                                }
+                                                className="px-2 text-[1.1rem]"
+                                            >
+                                                -
+                                            </button>
+                                            <p>{item.quantity}</p>
+                                            <button
+                                                onClick={() =>
+                                                    addQuantity(item.productId)
+                                                }
+                                                className="px-2 text-[1.1rem]"
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                        <p className="w-[8rem] text-center">
+                                            {item.totalPrice}
+                                        </p>
+                                        <button
+                                            onClick={() =>
+                                                removeToCart(item.productId)
+                                            }
+                                            className="w-[8rem] text-[#FB5607] font-bold"
+                                        >
+                                            Delete
+                                        </button>
                                     </div>
-                                    <p className="w-[8rem] text-center">
-                                        {item.price}
-                                    </p>
-                                    <p className="w-[8rem] text-center">-</p>
-                                    <p className="w-[8rem] text-center">-</p>
-                                    <button className="w-[8rem] text-[#FB5607] font-bold">
-                                        Delete
-                                    </button>
-                                </div>
-                            );
-                        })}
+                                );
+                            })
+                        )}
                     </div>
                 </div>
                 <div className="w-full lg:w-[40rem] flex flex-col gap-4">
                     <div className="w-full p-4 bg-white rounded-lg shadow-md">
-                        <h1 className="text-xl font-bold text-center mb-2">
+                        <h1 className="text-xl font-bold text-center mb-2 lg:mb-4">
                             Order details
                         </h1>
 
-                        <p className="text-lg font-bold my-1">
-                            Total Items: <span>12</span>
+                        <p className="text-lg font-semibold my-3">
+                            Total Items: <span>{totalItems}</span>
                         </p>
-                        <p className="text-lg font-bold my-1">
-                            Total Amount: <span>1200</span>
+                        <p className="text-lg font-semibold my-3">
+                            Total Amount: <span>{totalAmount}</span>
                         </p>
                     </div>
-                    <div className="w-full min-h-[20rem] lg:max-h-[30rem] p-4 bg-white rounded-lg shadow-md">
+                    <div className="w-full p-4 bg-white rounded-lg shadow-md">
                         <h1 className="text-xl font-bold text-center mb-5">
                             Payment Method
                         </h1>
+                        <div className="w-full flex flex-col p-2">
+                            <div className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="payment-type"
+                                    className="mx-4 w-4 h-4"
+                                />
+                                <label className="text-lg">
+                                    Cash on Delivery
+                                </label>
+                            </div>
+                            <div className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="payment-type"
+                                    className="mx-4 w-4 h-4"
+                                />
+                                <label className="text-lg">Gcash</label>
+                            </div>
+                            <div className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="payment-type"
+                                    className="mx-4 w-4 h-4"
+                                />
+                                <label className="text-lg">Online Bank</label>
+                            </div>
+                        </div>
                     </div>
-                    <button className="w-full p-2 text-white bg-[#FB5607] rounded-md shadow-md">
+                    <button
+                        onClick={placeOrder}
+                        className="w-full p-2 text-white bg-[#FB5607] rounded-md shadow-md"
+                    >
                         Place Order
                     </button>
                 </div>
