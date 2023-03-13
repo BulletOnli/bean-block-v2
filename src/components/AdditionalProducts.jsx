@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/Ai";
 
 const AdditionalProducts = () => {
     return (
@@ -79,6 +80,13 @@ const AdditionalProducts = () => {
                     </Link>
                 </div>
             </div>
+
+            <Link to="/products">
+                <button className="py-2 px-6 mt-[5rem] flex items-center text-white font-semibold bg-[#FB5607] rounded-md">
+                    Browse all products
+                    <AiOutlineArrowRight className="ml-2 text-xl" />
+                </button>
+            </Link>
         </div>
     );
 };

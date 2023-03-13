@@ -69,16 +69,6 @@ const reducer = (state, action) => {
         };
     }
 
-    if (action.type === "PLACE_ORDER") {
-        console.log("prder placed");
-        return {
-            ...state,
-            cartItems: [],
-            totalItems: 0,
-            totalAmount: 0,
-        };
-    }
-
     if (action.type === "ADD_QUANTITY") {
         const thisProduct = state.cartItems.find(
             (item) => item.productId == action.payload
@@ -93,11 +83,13 @@ const reducer = (state, action) => {
             (item) => item.productId !== action.payload
         );
 
+        console.log(updatedQuantity);
+
         return {
             ...state,
             totalItems: state.totalItems + 1,
             totalAmount: state.totalAmount + thisProduct.price,
-            cartItems: [...filterUniqueItems, updatedQuantity],
+            cartItems: [updatedQuantity, ...filterUniqueItems],
         };
     }
     if (action.type === "REMOVE_QUANTITY") {
@@ -121,7 +113,17 @@ const reducer = (state, action) => {
             ...state,
             totalItems: state.totalItems - 1,
             totalAmount: state.totalAmount - thisProduct.price,
-            cartItems: [...filterUniqueItems, updatedQuantity],
+            cartItems: [updatedQuantity, ...filterUniqueItems],
+        };
+    }
+
+    if (action.type === "PLACE_ORDER") {
+        return {
+            ...state,
+            cartItems: [],
+            totalItems: 0,
+            totalAmount: 0,
+            orderStatus: !state.orderStatus,
         };
     }
 };

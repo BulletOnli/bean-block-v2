@@ -14,7 +14,8 @@ const Products = () => {
 
     return (
         <>
-            <Navbar />
+            {/* isScrolling is true to make the bg color orange */}
+            <Navbar isScrolling={true} />
             <section className="w-full flex flex-col items-center my-8">
                 <h1 className="w-full text-2xl text-center lg:text-start font-bold lg:pl-12 tracking-widest mb-4">
                     Classic Coffee Beans

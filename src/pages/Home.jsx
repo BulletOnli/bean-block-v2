@@ -4,11 +4,14 @@ import Header from "../components/Header";
 import BestSellerItems from "../components/BestSellerItems";
 import AdditionalProducts from "../components/AdditionalProducts";
 import Footer from "../components/Footer";
+import { useGlobalContext } from "../Context";
 
 const Home = () => {
+    const { isScrolling } = useGlobalContext();
+
     return (
         <>
-            <Navbar />
+            <Navbar isScrolling={isScrolling} />
             <Header />
             <BestSellerItems />
             <AdditionalProducts />

@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
-import { FaCcMastercard, FaRegCreditCard } from "react-icons/Fa";
-import { TbTruckDelivery } from "react-icons/tb";
+import SuccessPopup from "../components/SuccessPopup";
 
 const Cart = () => {
     const {
@@ -13,6 +12,7 @@ const Cart = () => {
         placeOrder,
         addQuantity,
         removeQuantity,
+        orderStatus,
     } = useGlobalContext();
 
     return (
@@ -24,7 +24,7 @@ const Cart = () => {
                     </p>
                 </Link>
             </div>
-            <main className="w-full flex flex-col lg:flex-row gap-4 lg:justify-center p-4 lg:p-8">
+            <main className="relative w-full flex flex-col lg:flex-row gap-4 lg:justify-center p-4 lg:p-8">
                 <div className="w-full min-h-[41rem] flex flex-col py-6 px-8 bg-white rounded-lg shadow-md">
                     <h2 className="text-2xl text-[#FB5607] font-bold mb-8">
                         Shopping Cart
@@ -57,10 +57,11 @@ const Cart = () => {
                             cartItems.map((item, index) => {
                                 return (
                                     <div
-                                        className="w-full flex items-center"
+                                        className="w-full shadow-custom rounded-md p-1 flex items-center"
                                         key={index}
                                     >
-                                        <div className="w-[25rem]">
+                                        <div className="w-[25rem] lg:px-2 flex">
+                                            <p className="mr-3">{index + 1}.</p>
                                             {item.productName}
                                         </div>
                                         <p className="w-[8rem] text-center">
@@ -157,6 +158,9 @@ const Cart = () => {
                         Place Order
                     </button>
                 </div>
+
+                {/* Pop up modal showing when order is success */}
+                {orderStatus ? <SuccessPopup /> : ""}
             </main>
         </>
     );

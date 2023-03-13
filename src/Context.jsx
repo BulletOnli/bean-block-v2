@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import reducer from "./reducer";
 import productData from "./productData";
 
@@ -9,10 +9,12 @@ const initialState = {
     cartItems: [],
     totalItems: 0,
     totalAmount: 0,
+    orderSuccess: false,
 };
 
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+    const [isScrolling, setIsScrolling] = useState(false);
 
     const addToCart = (id, price) => {
         dispatch({ type: "ADD_TO_CART", payload: { id, price } });
@@ -22,16 +24,16 @@ const AppProvider = ({ children }) => {
         dispatch({ type: "REMOVE_TO_CART", payload: id });
     };
 
-    const placeOrder = () => {
-        dispatch({ type: "PLACE_ORDER" });
-    };
-
     const addQuantity = (id) => {
         dispatch({ type: "ADD_QUANTITY", payload: id });
     };
 
     const removeQuantity = (id) => {
         dispatch({ type: "REMOVE_QUANTITY", payload: id });
+    };
+
+    const placeOrder = () => {
+        dispatch({ type: "PLACE_ORDER" });
     };
 
     return (
@@ -43,6 +45,8 @@ const AppProvider = ({ children }) => {
                 placeOrder,
                 addQuantity,
                 removeQuantity,
+                isScrolling,
+                setIsScrolling,
             }}
         >
             {children}
