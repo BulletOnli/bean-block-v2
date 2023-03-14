@@ -1,12 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/Ai";
+import "aos/dist/aos.css";
+import { motion } from "framer-motion";
 
 const AdditionalProducts = () => {
     return (
-        <div className="w-full h-[110rem] lg:h-[80rem] flex flex-col items-center">
+        <div className="w-full overflow-hidden h-[110rem] lg:h-[85rem] flex flex-col items-center">
             {/* row 1 */}
-            <div className="w-full h-[40rem] flex flex-col lg:flex-row items-center p-4 lg:px-[10rem]">
+            <div
+                data-aos="fade-right"
+                className="w-full h-[40rem] flex flex-col lg:flex-row items-center p-4 lg:px-[10rem]"
+            >
                 <img
                     src="/images/extra5.jpg"
                     alt=""
@@ -32,7 +37,10 @@ const AdditionalProducts = () => {
             </div>
 
             {/* row 2 */}
-            <div className="w-full h-[40rem] flex flex-col-reverse lg:flex-row items-center p-4 lg:px-[10rem]">
+            <div
+                data-aos="fade-left"
+                className="w-full h-[40rem] flex flex-col-reverse lg:flex-row items-center p-4 lg:px-[10rem]"
+            >
                 <div className="w-full flex flex-col items-center lg:items-end text-center lg:text-end lg:px-12">
                     <h1 className="text-2xl lg:text-[2.3rem] font-bold mb-4 lg:mb-6">
                         Coffee Sauce
@@ -57,7 +65,10 @@ const AdditionalProducts = () => {
             </div>
 
             {/* row 3 */}
-            <div className="w-full h-[40rem] flex flex-col lg:flex-row items-center p-4 lg:px-[10rem]">
+            <div
+                data-aos="fade-right"
+                className="w-full h-[40rem] flex flex-col lg:flex-row items-center p-4 lg:px-[10rem]"
+            >
                 <img
                     src="/images/liquid2.jpg"
                     alt=""
@@ -82,10 +93,16 @@ const AdditionalProducts = () => {
             </div>
 
             <Link to="/products">
-                <button className="py-2 px-6 mt-[5rem] flex items-center text-white font-semibold bg-[#FB5607] rounded-md">
+                <motion.button
+                    whileHover={{ scale: 1.07 }}
+                    whileTap={{ scale: 0.95 }}
+                    data-aos="fade-up"
+                    data-aos-duration="500"
+                    className="py-2 px-6 my-[5rem] flex items-center text-white font-semibold bg-[#FB5607] rounded-md"
+                >
                     Browse all products
                     <AiOutlineArrowRight className="ml-2 text-xl" />
-                </button>
+                </motion.button>
             </Link>
         </div>
     );

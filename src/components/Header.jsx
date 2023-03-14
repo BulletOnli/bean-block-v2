@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import headerImg from "/images/extra3.jpg";
-import headerBg from "/images/bg3.jpg";
+import { motion } from "framer-motion";
+import "aos/dist/aos.css";
 
 const Header = () => {
     return (
@@ -29,19 +29,30 @@ const Header = () => {
                     </h3>
                     <div className="w-full flex justify-center items-center my-4 lg:my-7">
                         <Link to="/products">
-                            <button className="text-sm text-[#e0fbfc] lg:text-base font-medium py-1 px-2 lg:py-[6px] lg:px-3 mx-4 bg-[#E16504] rounded-md shadow-3xl">
+                            <motion.button
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="text-sm text-[#e0fbfc] lg:text-base font-medium py-1 px-2 lg:py-[6px] lg:px-3 mx-4 bg-[#E16504] rounded-md shadow-3xl"
+                            >
                                 Order Now
-                            </button>
+                            </motion.button>
                         </Link>
 
-                        <button className="text-sm text-white lg:text-base lg:font-medium py-1 px-3 lg:py-[6px] lg:px-4 mx-4 border-[1px] border-white rounded-md">
+                        <motion.button
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="text-sm text-white lg:text-base lg:font-medium py-1 px-3 lg:py-[6px] lg:px-4 mx-4 border-[1px] border-white rounded-md"
+                        >
                             About Us
-                        </button>
+                        </motion.button>
                     </div>
                 </div>
-                <div className="w-full hidden lg:flex lg:justify-center">
+                <div
+                    data-aos="fade-down"
+                    className="w-full hidden lg:flex lg:justify-center"
+                >
                     <img
-                        src={headerImg}
+                        src="/images/extra3.jpg"
                         alt=""
                         className="w-[18rem] lg:w-[32rem] lg:h-[40rem] lg:mt-[-10rem] lg:mr-[5rem] lg:rounded-3xl"
                         style={{

@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../Context";
+import { motion } from "framer-motion";
 
 const ProductCard = (props) => {
     const { addToCart } = useGlobalContext();
@@ -20,14 +21,16 @@ const ProductCard = (props) => {
             <h2 className="text-lg lg:text-base font-bold mb-2 lg:mb-1 px-4">
                 {props.data.productName}
             </h2>
-            <button
+            <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() =>
                     addToCart(props.data.productId, props.data.price)
                 }
                 className="w-max text-xs text-white mx-auto bg-[#FB5607] hover:bg-[#fb5407c4] lg:font-medium mb-3 py-[5px] px-3 lg:py-[5px] lg:mt-2 rounded-[4px]"
             >
                 Add to Cart
-            </button>
+            </motion.button>
         </div>
     );
 };

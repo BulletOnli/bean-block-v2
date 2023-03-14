@@ -9,7 +9,7 @@ const initialState = {
     cartItems: [],
     totalItems: 0,
     totalAmount: 0,
-    orderSuccess: false,
+    modalOpen: false,
 };
 
 const AppProvider = ({ children }) => {

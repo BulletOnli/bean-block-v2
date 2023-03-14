@@ -123,7 +123,7 @@ const reducer = (state, action) => {
             cartItems: [],
             totalItems: 0,
             totalAmount: 0,
-            orderStatus: !state.orderStatus,
+            modalOpen: !state.modalOpen,
         };
     }
 };

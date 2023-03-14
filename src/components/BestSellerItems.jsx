@@ -2,9 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
 import coffee1 from "/images/product1.jpg";
+import "aos/dist/aos.css";
 
 const BestSellerItems = () => {
-    const { setIsScrolling } = useGlobalContext();
+    const { isScrolling, setIsScrolling } = useGlobalContext();
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -17,12 +18,13 @@ const BestSellerItems = () => {
         }
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [isScrolling]);
 
     return (
         <div
+            data-aos="fade-up"
             ref={containerRef}
-            className="w-full flex flex-col items-center py-4 lg:mb-[5rem]"
+            className="w-full flex flex-col items-center py-4 lg:my-[5rem]"
         >
             <h1 className="text-3xl lg:text-[2.2rem] font-bold mb-8 lg:mb-16 tracking-[2px]">
                 Our Best Seller

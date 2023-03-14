@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import BestSellerItems from "../components/BestSellerItems";
@@ -9,6 +11,9 @@ import { useGlobalContext } from "../Context";
 const Home = () => {
     const { isScrolling } = useGlobalContext();
 
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
     return (
         <>
             <Navbar isScrolling={isScrolling} />
@@ -16,7 +21,10 @@ const Home = () => {
             <BestSellerItems />
             <AdditionalProducts />
 
-            <div className="w-full h-[20rem] lg:h-[30rem] flex items-center justify-center">
+            <div
+                data-aos="fade-in"
+                className="w-full h-[20rem] lg:h-[30rem] flex items-center justify-center"
+            >
                 <div className="w-[90%] lg:w-[60%] h-[12rem] lg:h-[15rem] flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg">
                     <h1 className="text-2xl lg:text-3xl font-bold">
                         Subscribe our Newslatter

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
-import SuccessPopup from "../components/SuccessPopup";
+// import SuccessPopup from "../components/SuccessPopup";
+import Modal from "../components/Modal";
 
 const Cart = () => {
     const {
@@ -12,20 +13,22 @@ const Cart = () => {
         placeOrder,
         addQuantity,
         removeQuantity,
-        orderStatus,
+        modalOpen,
+        isScrolling,
+        setIsScrolling,
     } = useGlobalContext();
 
     return (
         <>
             <div className="w-full sticky top-0 flex justify-between p-4 lg:px-6 bg-[#ff9100] z-10 shadow-md">
-                <Link to="/">
+                <Link to="/" onClick={() => setIsScrolling(!isScrolling)}>
                     <p className="uppercase text-white text-md lg:text-xl font-bold tracking-wider">
                         Bean Block
                     </p>
                 </Link>
             </div>
             <main className="relative w-full flex flex-col lg:flex-row gap-4 lg:justify-center p-4 lg:p-8">
-                <div className="w-full min-h-[41rem] flex flex-col py-6 px-8 bg-white rounded-lg shadow-md">
+                <div className="w-full min-h-[41.8rem] flex flex-col py-6 px-8 bg-white rounded-lg shadow-md">
                     <h2 className="text-2xl text-[#FB5607] font-bold mb-8">
                         Shopping Cart
                     </h2>
@@ -153,14 +156,14 @@ const Cart = () => {
                     </div>
                     <button
                         onClick={placeOrder}
-                        className="w-full p-2 text-white bg-[#FB5607] rounded-md shadow-md"
+                        className="w-full p-2 text-white bg-[#FF7B00] rounded-md shadow-md hover:bg-[#ff9100]"
                     >
                         Place Order
                     </button>
                 </div>
 
                 {/* Pop up modal showing when order is success */}
-                {orderStatus ? <SuccessPopup /> : ""}
+                {modalOpen && <Modal />}
             </main>
         </>
     );

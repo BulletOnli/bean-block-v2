@@ -93,7 +93,7 @@ export default [
     },
     {
         productName: "Bronzed Caramel",
-        img: "/images/product7.jpg",
+        img: "/images/coffee5.png",
         roastType: "Medium Dark Roast",
         price: 175,
         productType: "Flavored Coffee Beans",
@@ -102,7 +102,7 @@ export default [
     },
     {
         productName: "Java Mocha",
-        img: "/images/product7.jpg",
+        img: "/images/coffee5.png",
         roastType: "Medium Dark Roast",
         price: 175,
         productType: "Flavored Coffee Beans",
@@ -111,7 +111,7 @@ export default [
     },
     {
         productName: "Bright Butterscotch",
-        img: "images/product7.jpg",
+        img: "/images/coffee5.png",
         roastType: "Medium Dark Roast",
         price: 175,
         productType: "Flavored Coffee Beans",
