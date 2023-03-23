@@ -11,8 +11,11 @@
         "deploy": "gh-pages -d dist"
     },
     "dependencies": {
+        "@chakra-ui/react": "^2.5.2",
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
         "aos": "^3.0.0-beta.6",
-        "framer-motion": "^10.2.5",
+        "framer-motion": "^10.8.5",
         "nanoid": "^4.0.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

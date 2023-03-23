@@ -1,9 +1,21 @@
 import React from "react";
 import { useGlobalContext } from "../Context";
 import { motion } from "framer-motion";
+import { useToast } from "@chakra-ui/react";
 
 const ProductCard = (props) => {
     const { addToCart } = useGlobalContext();
+    const toast = useToast();
+
+    const showSuccessToast = () => {
+        toast({
+            title: "Added to Cart.",
+            status: "success",
+            duration: 2000,
+            isClosable: false,
+            position: "bottom-left",
+        });
+    };
 
     return (
         <div className="w-[13rem] h-max relative flex flex-col my-4 rounded-lg overflow-hidden shadow-custom">
@@ -24,9 +36,10 @@ const ProductCard = (props) => {
             <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() =>
-                    addToCart(props.data.productId, props.data.price)
-                }
+                onClick={() => {
+                    addToCart(props.data.productId, props.data.price);
+                    showSuccessToast();
+                }}
                 className="w-max text-xs text-white mx-auto bg-[#FB5607] hover:bg-[#fb5407c4] lg:font-medium mb-3 py-[5px] px-3 lg:py-[5px] lg:mt-2 rounded-[4px]"
             >
                 Add to Cart
